@@ -37,4 +37,4 @@ RUN rm -rf usr/src/redmine/plugins/*/.git
 FROM redmine
 # This build stage is the final output image
 
-COPY --from=build /home/ /
+COPY --from=build --chown=redmine:redmine /home/ /
