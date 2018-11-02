@@ -1,6 +1,5 @@
-diff -ur a/config.ru b/config.ru
---- a/config.ru
-+++ b/config.ru
+--- a/usr/src/redmine/config.ru
++++ b/usr/src/redmine/config.ru
 @@ -1,4 +1,6 @@
  # This file is used by Rack-based servers to start the application.
  

@@ -13,23 +13,23 @@ RUN\
 
 # Set up work directory
 WORKDIR /home
-RUN mkdir plugins
+RUN mkdir usr/src/redmine/plugins
 
 # Get the config.ru file and patch it
-COPY --from=orig /usr/src/redmine/config.ru ./
+COPY --from=orig /usr/src/redmine/config.ru ./usr/src/redmine/
 COPY relative_url_root.patch /tmp/
 RUN patch -p1 </tmp/relative_url_root.patch
 
 # Get git-remote plugin, tag 0.0.2 (newest release as of now)
 RUN\
- git -C plugins clone --quiet --branch 0.0.2\
+ git -C usr/src/redmine/plugins clone --quiet --branch 0.0.2\
   https://github.com/dergachev/redmine_git_remote
 
 # Remove the git repository from the plugins
-RUN rm -rf plugins/*/.git
+RUN rm -rf usr/src/redmine/plugins/*/.git
 
 
 FROM redmine
 # This build stage is the final output image
 
-COPY --from=build --chown=redmine:redmine /home/ /usr/src/redmine/
+COPY --from=build /home/ /
