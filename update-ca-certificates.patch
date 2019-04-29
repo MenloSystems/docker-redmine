@@ -1,6 +1,6 @@
 --- a/docker-entrypoint.sh
 +++ b/docker-entrypoint.sh
-@@ -23,6 +23,12 @@
+@@ -24,6 +24,12 @@
  	unset "$fileVar"
  }
  
@@ -10,6 +10,6 @@
 +	update-ca-certificates
 +fi
 +
+ isLikelyRedmine=
  case "$1" in
- 	rails|rake|passenger)
- 		if [ ! -f './config/database.yml' ]; then
+ 	rails | rake | passenger ) isLikelyRedmine=1 ;;
