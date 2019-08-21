@@ -6,7 +6,7 @@
  
 +# Update SSL ca-certificates, if local certificates are present:
 +# /usr/local/share/ca-certificates/*.crt
-+if [ "$(find -L /usr/local/share/ca-certificates -type f -name \*.crt)" ]; then
++if [ -w /etc/ssl -a -n "$(find -L /usr/local/share/ca-certificates -type f -name \*.crt)" ]; then
 +	update-ca-certificates
 +fi
 +
