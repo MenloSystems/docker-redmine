@@ -30,6 +30,13 @@ RUN\
  git -C usr/src/redmine/plugins clone --quiet --branch 0.0.2\
   https://github.com/dergachev/redmine_git_remote
 
+# Get scm_hookhelpers plugin, commit c913581 (newest release as of now)
+RUN\
+ git -C usr/src/redmine/plugins clone --quiet\
+  https://github.com/lpirl/redmine_scm_hookhelpers &&\
+ git -C usr/src/redmine/plugins/redmine_scm_hookhelpers\
+  checkout c913581 --
+
 # Remove the git repository from the plugins
 RUN rm -rf usr/src/redmine/plugins/*/.git
 

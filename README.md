@@ -5,7 +5,10 @@ Redmine image for Docker with several extensions and improvements.
 
 This Redmine image is based on the [official -/redmine image][1] plus a
 RAILS_RELATIVE_URL_ROOT patch, support for additional SSL certificates
-and a pre-installed git-remote plugin.
+and pre-installed plugins:
+
+* git-remote
+* scm-hookhelpers
 
 RAILS_RELATIVE_URL_ROOT patch
 -----------------------------
@@ -27,5 +30,11 @@ git-remote plugin
 
 Comes with the [git-remote][2] plugin pre-installed.
 
+scm-hookhelpers plugin
+----------------------
+
+Comes with the [scm-hookhelpers][3] plugin pre-installed.
+
 [1]: https://hub.docker.com/_/redmine
 [2]: https://github.com/dergachev/redmine_git_remote
+[3]: https://github.com/lpirl/redmine_scm_hookhelpers
