@@ -13,7 +13,7 @@ RUN\
 
 # Set up work directory
 WORKDIR /home
-RUN mkdir -p usr/src/redmine/plugins
+RUN mkdir -p usr/src/redmine/app/controllers usr/src/redmine/plugins
 
 # Get the config.ru file and patch it
 COPY --from=orig /usr/src/redmine/config.ru ./usr/src/redmine/
@@ -24,6 +24,12 @@ RUN patch -p1 </tmp/relative_url_root.patch
 COPY --from=orig /docker-entrypoint.sh ./
 COPY update-ca-certificates.patch /tmp/
 RUN patch -p1 </tmp/update-ca-certificates.patch
+
+# Get the custom_fields_controller.rb file and patch it
+COPY --from=orig /usr/src/redmine/app/controllers/custom_fields_controller.rb\
+ ./usr/src/redmine/app/controllers/
+COPY public_custom_fields.patch /tmp/
+RUN patch -p1 </tmp/public_custom_fields.patch
 
 # Get git-remote plugin, tag 0.0.2 (newest release as of now)
 RUN\

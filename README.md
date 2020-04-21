@@ -4,8 +4,8 @@ Redmine image for Docker
 Redmine image for Docker with several extensions and improvements.
 
 This Redmine image is based on the [official -/redmine image][1] plus a
-RAILS_RELATIVE_URL_ROOT patch, support for additional SSL certificates
-and pre-installed plugins:
+RAILS_RELATIVE_URL_ROOT patch, support for additional SSL certificates,
+public custom_fields and pre-installed plugins:
 
 * git-remote
 * scm-hookhelpers
@@ -24,6 +24,12 @@ Additional SSL certificates
 Any certificates present in the `/usr/local/share/ca-certificates/`
 directory are added to the list of CAs trusted by OpenSSL on start of
 the container.
+
+Public custom_fields
+--------------------
+
+The /custom_fields API endpoint is now readable for everyone. Only
+modification requires admin privileges.
 
 git-remote plugin
 -----------------

@@ -1,0 +1,11 @@
+--- a/usr/src/redmine/app/controllers/custom_fields_controller.rb
++++ b/usr/src/redmine/app/controllers/custom_fields_controller.rb
+@@ -19,7 +19,7 @@
+   layout 'admin'
+   self.main_menu = false
+
+-  before_action :require_admin
++  before_action :require_admin, :except => [ :index ]
+   before_action :build_new_custom_field, :only => [:new, :create]
+   before_action :find_custom_field, :only => [:edit, :update, :destroy]
+   accept_api_auth :index
