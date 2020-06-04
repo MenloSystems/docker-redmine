@@ -5,10 +5,10 @@ FROM redmine AS orig
 FROM alpine AS build
 # This build stage actually prepares all files
 
-# Install git tool and configure it
+# Install git & patch tools and configure git
 # Run `docker build --no-cache .` to update dependencies
 RUN\
- apk add --no-cache git &&\
+ apk add --no-cache git patch &&\
  git config --global advice.detachedHead false
 
 # Set up work directory
